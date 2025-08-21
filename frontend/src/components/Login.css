@@ -1,0 +1,120 @@
+/* General container setup */
+.login-container {
+    display: flex;
+    flex-direction: column; /* Stack label, select, and value */
+    margin-bottom: 15px;
+
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+  }
+  .input-container{
+    color: #5a3c2e;
+    text-align: left;
+    padding: 2px;
+    
+  }
+  /* Background image */
+  .background-img {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+  }
+  
+  /* Login box styles */
+  .login-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 1, 0, 0.9);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    height: 50vh;
+    color: #5a3c2e;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .login-select{
+    height: 5vh;
+    width: 9vw;
+  }
+  .login-box h4 {
+    color: #000 ;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .login-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Input fields */
+  .login-box input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #eeeae8;
+    color: #5a3c2e;
+    width: 25vw;
+  }
+  
+  /* Submit button */
+  .login-box button {
+    padding: 10px;
+    background-color: #6f4e37;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-box button:hover {
+    background-color: #5a3c2e;
+  }
+  
+  /* Labels */
+  label {
+    text-align: start;
+    font-weight: bold;
+  }
+  
+  /* Hyperlinks */
+  h3 {
+    font-weight: lighter;
+    font-size: 0.9rem;
+  }
+  
+  h3 > a {
+    color: #9a857b;
+    text-decoration: none;
+  }
+  
+  h3 > a:hover {
+    color: #897267;
+    text-decoration: underline;
+  }
+  .link {
+    color: #007bff; /* Optional: Adds a link color */
+    cursor: pointer; /* Ensures the pointer cursor appears */
+    text-decoration: underline; /* Optional: Makes it look like a link */
+  }
+  
+  .link:hover {
+    color: #0056b3; /* Optional: Changes color on hover for better UX */
+  }
+  

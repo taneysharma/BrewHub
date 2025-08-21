@@ -1,0 +1,22 @@
+/* Team.css */
+.team-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+  }
+  
+  .team-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #000;
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #a98256;
+  }
+  

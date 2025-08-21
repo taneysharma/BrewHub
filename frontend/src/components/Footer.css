@@ -1,0 +1,120 @@
+.footer {
+    background-color: #5e3417;
+    color: white;
+    padding: 2rem 0;
+    text-align: left;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Flexbox container to align sections in a row */
+  .footer-container {
+    display: flex;
+    justify-content: space-between; /* Space between sections */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    padding: 0 2rem;
+  }
+  
+  /* Footer section styles */
+  .footer-section {
+    flex: 1; /* Allows sections to adjust width dynamically */
+    margin: 0 1rem;
+    min-width: 200px; /* Minimum width for each section to prevent collapsing */
+  }
+  
+  .footer-section h2 {
+    color: #f3d19b;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .footer-section p,
+  .footer-section a {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .footer-section a:hover {
+    color: #f3d19b;
+  }
+  
+  /* Styling for list of links */
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Quick Links Arrows - Same Line */
+  .footer-section ul li {
+    display: flex; /* Use flexbox for the list items */
+    align-items: center; /* Align arrow and text vertically */
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-section ul li::before {
+    content: "\2192"; /* Unicode for right arrow (→) */
+    color: #f3d19b; /* Arrow color */
+    margin-right: 10px; /* Space between the arrow and the text */
+    font-size: 1rem; /* Adjust arrow size */
+    display: inline-block;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #f3d19b;
+  }
+  
+  
+  
+  /* Social media icons styling */
+  .social-icons {
+    display: flex;
+    gap: 1rem; /* Space between icons */
+    margin-top: 1rem;
+  }
+  
+  .social-icons a {
+    color: #5e3417;
+    font-size: 1.5rem;
+    background-color: white; /* White background for the icons */
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners for icons */
+    width: 19px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    background-color: #f3d19b;
+    color: #5e3417;
+  }
+  
+  /* White line above the footer text */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid white; /* White line */
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  .footer-bottom a {
+    color: #f3d19b;
+    text-decoration: none;
+  }
+  
+  .footer-bottom a:hover {
+    color: #fff;
+  }
+  

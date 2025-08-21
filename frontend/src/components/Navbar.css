@@ -1,0 +1,106 @@
+/* Navbar container styles */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Space between logo and other elements */
+  align-items: center;
+  background-color: #6f4e37; /* Coffee-themed background color */
+  width: 100%; /* Ensure the navbar spans only the viewport width */
+  height: 70px;
+  padding: 0 2rem; /* Even padding on left and right */
+  box-sizing: border-box; /* Include padding in the element's width */
+  overflow: hidden; /* Hide any accidental overflow */
+}
+
+/* Logo and title styles */
+.navbar h1 {
+  display: flex; /* Use flexbox for horizontal alignment */
+  align-items: center; /* Vertically center the image and text */
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0;
+  gap: 10px; /* Space between the logo image and text */
+  color: white;
+  margin-bottom: -52px;
+}
+
+/* Coffee logo styles */
+.coffee-logo {
+  width: 30px;
+  height: 30px;
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex; /* Align links horizontally */
+  gap: 2rem; /* Add space between each link */
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  margin-left: 71px ;
+}
+
+.icons {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-around; /* Distribute space equally */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Add some padding around the icons */
+  border-radius: 5px; /* Optional: rounded corners */
+  gap: 1.8rem;
+}
+
+
+
+/* Navigation link styles */
+.nav-links li {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-links li:hover {
+  color: #d3a17e; /* Lighter coffee color on hover */
+}
+
+/* Login button styles */
+.navbar button {
+  font-size: 1rem;
+  padding: 8px 16px;
+  background-color: #d3a17e; /* Light coffee color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #c08b6a; /* Slightly darker shade on hover */
+}
+.fa-user-shield:before{
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.fa-user:before  {
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.fa-shopping-cart{
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.fa-heart:before{
+  color: white;
+  cursor: pointer;
+}
+.fa-clock::before{
+  color: #fff;
+  cursor: pointer;
+}

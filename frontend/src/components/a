@@ -1,0 +1,8 @@
+<ul className="nav-links">
+  <li onClick={() => handleNavClick('/')}>Home</li>
+  <li onClick={() => handleNavClick('#about')}>About</li>
+  <li onClick={() => handleNavClick('#products')}>Products</li>
+  <li onClick={() => handleNavClick('/gallery')}>Gallery</li>
+  <li onClick={() => navigate('/book-table')}>Book Table</li> {/* Update link to navigate to /book-table */}
+  <li onClick={() => handleNavClick('#contact')}>Contact</li>
+</ul>
