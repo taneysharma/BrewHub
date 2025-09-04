@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './BookTable.css'; // Include a separate CSS file for styling
+import './BookTable.css'; 
+
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
 
 const socialLinks = [
   { platform: 'facebook', url: 'https://facebook.com' },
@@ -27,7 +29,7 @@ const BookTable = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch('http://localhost:5000/table-bookings', {
+      const response = await fetch(`${API_BASE}/table-bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

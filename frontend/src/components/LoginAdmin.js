@@ -4,6 +4,8 @@ import axios from 'axios';
 import './Login.css';
 import img1 from '../assets/Signup.jpg';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function LoginAdmin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +15,7 @@ function LoginAdmin() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/login-admin', { email, password });
+      const response = await axios.post(`${API_BASE}/login-admin`, { email, password });
       if (response.data.role === 'admin') {
         localStorage.setItem('token', response.data.token);
         navigate('/admin-dashboard');

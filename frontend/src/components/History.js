@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './History.css';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function History() {
   const [orders, setOrders] = useState([]);
 
@@ -11,9 +13,9 @@ function History() {
         const token = localStorage.getItem('token');
         const role = localStorage.getItem('role'); // Get the role from local storage
 
-        let endpoint = 'http://localhost:5000/orders1';
+        let endpoint = `${API_BASE}/orders1`;
         if (role === 'admin') {
-          endpoint = 'http://localhost:5000/orders';
+          endpoint = `${API_BASE}/orders`;
         }
 
         const response = await axios.get(endpoint, {

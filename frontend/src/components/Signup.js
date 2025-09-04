@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 import backg from '../assets/Signup.jpg';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function Signup() {
   const [formData, setFormData] = useState({
     name: '',
@@ -25,7 +27,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/signup', formData);
+      const response = await axios.post(`${API_BASE}/signup`, formData);
       console.log('Signup response:', response.data); // Log the response data
       alert('Signup successful');
       navigate('/login'); // Redirect to login page

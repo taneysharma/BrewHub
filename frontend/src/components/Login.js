@@ -4,6 +4,8 @@ import './Login.css';
 import axios from 'axios';
 import img1 from '../assets/Signup.jpg';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +15,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
+      const response = await axios.post(`${API_BASE}/login`, { email, password });
       const userRole = response.data.role;
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('role', response.data.role);

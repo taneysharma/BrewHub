@@ -4,6 +4,8 @@ import { FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import './AdminDashboard.css';
 import AdminSignup from './AdminSignup'; // Import the new AdminSignup component
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function AdminDashboard() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -33,18 +35,18 @@ function AdminDashboard() {
 
     const fetchData = async () => {
       try {
-        const productsResponse = await axios.get('http://localhost:5000/products', {
+        const productsResponse = await axios.get(`${API_BASE}/products`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProducts(productsResponse.data);
         setFilteredProducts(productsResponse.data);
 
-        const usersResponse = await axios.get('http://localhost:5000/users', {
+        const usersResponse = await axios.get(`${API_BASE}/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(usersResponse.data);
 
-        const categoriesResponse = await axios.get('http://localhost:5000/categories', {
+        const categoriesResponse = await axios.get(`${API_BASE}/categories`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCategories(categoriesResponse.data);
@@ -69,7 +71,7 @@ function AdminDashboard() {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/products/${productId}`, {
+      await axios.delete(`${API_BASE}/products/${productId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProducts(products.filter(product => product._id !== productId));
@@ -99,7 +101,7 @@ function AdminDashboard() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/products', formDataToSend, {
+      const response = await axios.post(`${API_BASE}/products`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -127,7 +129,7 @@ function AdminDashboard() {
     }
 
     try {
-      const response = await axios.put(`http://localhost:5000/products/${editProductId}`, formDataToSend, {
+      const response = await axios.put(`${API_BASE}/products/${editProductId}`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -148,7 +150,7 @@ function AdminDashboard() {
   const handleDeleteUser = async (userId) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       try {
-        await axios.delete(`http://localhost:5000/users/${userId}`, {
+        await axios.delete(`${API_BASE}/users/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert('User deleted successfully');
@@ -179,7 +181,7 @@ function AdminDashboard() {
 
   const fetchOrders = async () => {
     try {
-      const orderHistoryResponse = await axios.get('http://localhost:5000/orders', {
+      const orderHistoryResponse = await axios.get(`${API_BASE}/orders`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOrderHistory(orderHistoryResponse.data);
@@ -192,7 +194,7 @@ function AdminDashboard() {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/all-table-bookings', {
+      const response = await axios.get(`${API_BASE}/all-table-bookings`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(response.data);
@@ -207,7 +209,7 @@ function AdminDashboard() {
   const handleCategorySubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/categories', { name: categoryName }, {
+      const response = await axios.post(`${API_BASE}/categories`, { name: categoryName }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert('Category added successfully');
@@ -433,7 +435,7 @@ function AdminDashboard() {
               filteredProducts.map((product) => (
                 <div className="product-card" key={product._id}>
                   <img
-                    src={`http://localhost:5000/uploads/${product.photo}`}
+                    src={`${API_BASE}/uploads/${product.photo}`}
                     alt={product.coffeeName}
                   />
                   <h3>{product.coffeeName}</h3>

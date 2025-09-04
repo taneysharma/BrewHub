@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Cart.css' ;
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -11,7 +13,7 @@ function Cart() {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/cart', {
+        const response = await axios.get(`${API_BASE}/cart`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
@@ -28,7 +30,7 @@ function Cart() {
   const handlePayment = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/payment', { cartItems }, {
+      await axios.post(`${API_BASE}/payment`, { cartItems }, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -77,7 +79,7 @@ function Cart() {
             <tr key={item._id}>
               <td>
                 <img
-                  src={`http://localhost:5000/uploads/${item.photo}`}
+                  src={`${API_BASE}/uploads/${item.photo}`}
                   alt={item.coffeeName}
                   className="product-image"
                 />

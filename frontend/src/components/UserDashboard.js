@@ -5,6 +5,8 @@ import { FaHeart, FaRegHeart, FaSignOutAlt, FaSearch } from "react-icons/fa";
 import "./UserDashboard.css";
 import BookTable from "./BookTable"; // Import the BookTable component
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function UserDashboard() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -27,7 +29,7 @@ function UserDashboard() {
       try {
         const token = localStorage.getItem("token");
 
-        const productsResponse = await axios.get("http://localhost:5000/products", {
+        const productsResponse = await axios.get(`${API_BASE}/products`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -35,7 +37,7 @@ function UserDashboard() {
         setProducts(productsResponse.data);
         setFilteredProducts(productsResponse.data);
 
-        const wishlistResponse = await axios.get("http://localhost:5000/wishlist", {
+        const wishlistResponse = await axios.get(`${API_BASE}/wishlist`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -44,7 +46,7 @@ function UserDashboard() {
         setWishlist(wishlistData.map((item) => item._id));
         setWishlistProducts(wishlistData);
 
-        const cartResponse = await axios.get("http://localhost:5000/cart", {
+        const cartResponse = await axios.get(`${API_BASE}/cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -53,12 +55,12 @@ function UserDashboard() {
         setCart(cartData.map((item) => item._id));
         setCartCount(cartData.length);
 
-        const orderHistoryResponse = await axios.get('http://localhost:5000/orders1', {
+        const orderHistoryResponse = await axios.get(`${API_BASE}/orders1`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOrderHistory(orderHistoryResponse.data);
 
-        const categoriesResponse = await axios.get('http://localhost:5000/categories', {
+        const categoriesResponse = await axios.get(`${API_BASE}/categories`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCategories(categoriesResponse.data);
@@ -73,7 +75,7 @@ function UserDashboard() {
   const fetchBookings = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5000/table-bookings", {
+      const response = await axios.get(`${API_BASE}/table-bookings`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -112,7 +114,7 @@ function UserDashboard() {
     try {
       const token = localStorage.getItem("token");
       if (wishlist.includes(productId)) {
-        await axios.delete(`http://localhost:5000/wishlist/${productId}`, {
+        await axios.delete(`${API_BASE}/wishlist/${productId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -121,7 +123,7 @@ function UserDashboard() {
         setWishlistProducts(wishlistProducts.filter((product) => product._id !== productId));
       } else {
         await axios.post(
-          "http://localhost:5000/wishlist",
+          `${API_BASE}/wishlist`,
           { productId },
           {
             headers: {
@@ -129,7 +131,7 @@ function UserDashboard() {
             },
           }
         );
-        const wishlistResponse = await axios.get("http://localhost:5000/wishlist", {
+        const wishlistResponse = await axios.get(`${API_BASE}/wishlist`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -148,7 +150,7 @@ function UserDashboard() {
     try {
       const token = localStorage.getItem("token");
       if (cart.includes(productId)) {
-        await axios.delete(`http://localhost:5000/cart/${productId}`, {
+        await axios.delete(`${API_BASE}/cart/${productId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -157,7 +159,7 @@ function UserDashboard() {
         setCartCount(cartCount - 1);
       } else {
         await axios.post(
-          "http://localhost:5000/cart",
+          `${API_BASE}/cart`,
           { productId },
           {
             headers: {
@@ -237,7 +239,7 @@ function UserDashboard() {
                 wishlistProducts.map((product) => (
                   <div className="product-card1" key={product._id}>
                     <img
-                      src={`http://localhost:5000/uploads/${product.photo}`}
+                      src={`${API_BASE}/uploads/${product.photo}`}
                       alt={product.coffeeName}
                     />
                     <h3>{product.coffeeName}</h3>
@@ -312,7 +314,7 @@ function UserDashboard() {
     filteredProducts.map((product) => (
       <div className="product-card1" key={product._id}>
         <img
-          src={`http://localhost:5000/uploads/${product.photo}`}
+          src={`${API_BASE}/uploads/${product.photo}`}
           alt={product.coffeeName}
         />
         <h3>{product.coffeeName}</h3>

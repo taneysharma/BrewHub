@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Wishlist.css';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function Wishlist() {
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -15,7 +17,7 @@ function Wishlist() {
         const token = localStorage.getItem('token');
 
         // Fetch wishlist products
-        const wishlistResponse = await axios.get('http://localhost:5000/wishlist', {
+        const wishlistResponse = await axios.get(`${API_BASE}/wishlist`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -23,7 +25,7 @@ function Wishlist() {
         setWishlistProducts(wishlistResponse.data);
 
         // Fetch cart data
-        const cartResponse = await axios.get('http://localhost:5000/cart', {
+        const cartResponse = await axios.get(`${API_BASE}/cart`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -43,7 +45,7 @@ function Wishlist() {
     try {
       const token = localStorage.getItem('token');
       if (cart.includes(productId)) {
-        await axios.delete(`http://localhost:5000/cart/${productId}`, {
+        await axios.delete(`${API_BASE}/cart/${productId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -51,7 +53,7 @@ function Wishlist() {
         setCart(cart.filter(id => id !== productId));
         setCartCount(cartCount - 1);
       } else {
-        await axios.post('http://localhost:5000/cart', { productId }, {
+        await axios.post(`${API_BASE}/cart`, { productId }, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -68,7 +70,7 @@ function Wishlist() {
   const handleRemoveFromWishlist = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/wishlist/${productId}`, {
+      await axios.delete(`${API_BASE}/wishlist/${productId}` , {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -95,7 +97,7 @@ function Wishlist() {
           wishlistProducts.map((product) => (
             <div className="product-card" key={product._id}>
               <img
-                src={`http://localhost:5000/uploads/${product.photo}`}
+                src={`${API_BASE}/uploads/${product.photo}`}
                 alt={product.coffeeName}
               />
               <h3>{product.coffeeName}</h3>

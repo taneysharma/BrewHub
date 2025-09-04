@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Payment.css';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 const Payment = () => {
   const [orders, setOrders] = useState([]);
   const [paymentMethod, setPaymentMethod] = useState("Cash on Delivery");
@@ -9,7 +11,7 @@ const Payment = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/orders', {
+        const response = await axios.get(`${API_BASE}/orders`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -39,7 +41,7 @@ const Payment = () => {
             {orders.map((order) => (
               <div className="order-item" key={order._id}>
                 <img
-                  src={order.image || 'default-image-url'} // Replace 'default-image-url' with a placeholder if needed
+                  src={order.image ? `${API_BASE}/uploads/${order.image}` : 'default-image-url'} // Replace 'default-image-url' with a placeholder if needed
                   alt={order.productName}
                   className="order-item-image"
                 />

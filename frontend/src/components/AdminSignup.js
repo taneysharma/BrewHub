@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 import backg from '../assets/Signup.jpg';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://brewhub-tx1e.onrender.com';
+
 function AdminSignup() {
   const [formData, setFormData] = useState({
     name: '',
@@ -24,7 +26,7 @@ function AdminSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/signup-admin', {
+      await axios.post(`${API_BASE}/signup-admin`, {
         ...formData,
         role: 'admin',
       });
