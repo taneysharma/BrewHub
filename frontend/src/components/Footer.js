@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-section coffee-point">
           <h2>Coffee Point</h2>
           <p>
-            Our Coffee Is Always The Way You Like. We Don't Make Your Coffee. 
+            Our Coffee Is Always The Way You Like. We Don't Make Your Coffee.
             We Make Your Day. We're Not Just A Cup Of Coffee. We're A Lifestyle.
           </p>
         </div>
@@ -36,10 +36,10 @@ const Footer = () => {
           <p><FaMapMarkerAlt /> India , Haryana</p>
 
           <div className="social-icons">
-            <a href="#"><FaFacebook /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaLinkedin /></a>
+            <a href="https://facebook.com"><FaFacebook /></a>
+            <a href="https://twitter.com"><FaTwitter /></a>
+            <a href="https://instagram.com"><FaInstagram /></a>
+            <a href="https://linkedin.com"><FaLinkedin /></a>
           </div>
         </div>
       </div>
